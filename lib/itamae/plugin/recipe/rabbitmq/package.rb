@@ -19,8 +19,11 @@ when 'redhat', 'fedora'
       nil
     end
 
+  package 'epel-release'
+
   package 'rabbitmq-server' do
     version rabbitmq_version unless rabbitmq_version.nil?
+    options '--enablerepo=epel'
   end
 else
   fail 'Sorry your platform is not supported yet.'
