@@ -25,6 +25,8 @@ Or install it yourself as:
 ```
 # your recipe
 include_recipe 'rabbitmq::package'
+
+# use this if you want to enable bundled rabbitmq plugins.
 include_recipe 'rabbitmq::plugins'
 ```
 
