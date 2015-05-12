@@ -16,7 +16,7 @@ node_plugins =
 (node_plugins.uniq.sort).each do |name|
   execute "enable rabbitmq '#{name}' plugin" do
     command "#{CMD_PATH}/rabbitmq-plugins enable #{name}"
-    not_if "#{CMD_PATH}/rabbitmq-plugins list | grep '#{name} ' | grep -iv '[E]'"
+    not_if "#{CMD_PATH}/rabbitmq-plugins list -E | grep '#{name} '"
     notifies :restart, 'service[rabbitmq-server]'
   end
 end
