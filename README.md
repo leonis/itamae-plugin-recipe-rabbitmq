@@ -38,6 +38,11 @@ Use this with `itamae -y node.yml`
 # node.yml
 rabbitmq:
   version: 3.1.5
+  vhost: /sensu
+  user:
+    name: sensu
+    password: secret
+    tag: administrator
   plugins:
     - rabbitmq_management
     - rabbitmq_management_visualiser
@@ -46,7 +51,14 @@ rabbitmq:
 | name | required? | description |
 |:-----|:---------:|:------------|
 | rabbitmq.version | optional | rabbitmq version to be installed |
+| rabbitmq.vhost   | optional | vhost to be created |
+| rabbitmq.user    | optional | user to be added |
+| rabbitmq.user.name | optional | username |
+| rabbitmq.user.password |  optional | password |
+| rabbitmq.user.tag | optional | user tag on rabbitmq (if empty, tag will cleared) |
 | rabbitmq.plugins | optional | enabled rabbitmq plugins |
+
+NOTE: You should not write password here directory.
 
 ## Contributing
 

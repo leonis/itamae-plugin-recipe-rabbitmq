@@ -1,0 +1,26 @@
+# Configure RabbitMQ
+
+unless node[:rabbitmq].nil?
+  # create vhost
+  unless node[:rabbitmq][:vhost].nil?
+    execute 'create vhost on rabbitmq' do
+      command "rabbitmqctl add_vhost #{node[:rabbitmq][:vhost]}"
+      not_if "rabbitmqctl list_vhosts | grep '#{node[:rabbitmq][:vhost]}'"
+    end
+  end
+
+  unless node[:rabbitmq][:user].nil?
+    user = node[:rabbitmq][:user]
+
+    execute 'create user on rabbitmq' do
+      command "rabbitmqctl add_user #{user[:name]} #{user[:password]}"
+      not_if "rabbitmqctl list_users | grep '#{user[:name]}'"
+    end
+
+    user_tag = (user[:tag].nil? ? '' : user[:tag])
+    execute "add tag '#{user_tag}' to '#{user[:name]}' on rabbitmq" do
+      command "rabbitmqctl set_user_tags #{user[:name]} #{user_tag}"
+      not_if "rabbitmqctl list_users | grep #{user[:name]} | cut -f 2 | grep #{user_tag}"
+    end
+  end
+end

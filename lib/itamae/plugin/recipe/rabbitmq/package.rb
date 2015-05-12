@@ -29,7 +29,8 @@ else
   fail 'Sorry your platform is not supported yet.'
 end
 
-# Configuration
+include_recipe 'rabbitmq::config'
+
 service 'rabbitmq-server' do
   action [:enable, :start]
 end
