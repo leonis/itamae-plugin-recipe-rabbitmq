@@ -92,6 +92,11 @@ rabbitmq:
     name: sensu
     password: secret
     tag: administrator
+    rights:
+      vhost: /sensu
+      conf: .*
+      write: .*
+      read: .*
   plugins:
     - rabbitmq_management
     - rabbitmq_management_visualiser

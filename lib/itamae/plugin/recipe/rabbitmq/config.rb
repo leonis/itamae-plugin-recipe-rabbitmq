@@ -22,5 +22,17 @@ unless node[:rabbitmq].nil?
       command "rabbitmqctl set_user_tags #{user[:name]} #{user_tag}"
       not_if "rabbitmqctl list_users | grep #{user[:name]} | cut -f 2 | grep #{user_tag}"
     end
+
+    if user[:rights]
+      rights = user[:rights]
+
+      permission_command = %(rabbitmqctl set_permissions -p #{rights[:vhost]} #{user[:name]} "#{rights[:conf]}" "#{rights[:write]}" "#{rights[:read]}")
+      permission_pattern = "^#{rights[:vhost]}\\s#{rights[:conf]}\\s#{rights[:write]}\\s#{rights[:read]}$"
+
+      execute "set permission to '#{user[:name]}' on rabbitmq" do
+        command permission_command
+        not_if "rabbitmqctl list_user_permissions #{user[:name]} | grep '#{permission_pattern}'"
+      end
+    end
   end
 end
