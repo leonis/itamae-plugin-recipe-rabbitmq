@@ -22,12 +22,42 @@ Or install it yourself as:
 
 ### Recipe
 
+#### package recipe
+
+Install RabbitMQ by package.
+
 ```
 # your recipe
 include_recipe 'rabbitmq::package'
+```
 
-# use this if you want to enable bundled rabbitmq plugins.
-include_recipe 'rabbitmq::plugins'
+#### config recipe
+
+Just only add vhost, user, permissions to rabbitmq.
+
+```
+# your recipe
+include_recipe 'rabbitmq::config'
+```
+
+NOTE: Currently, this gem does not support to configure `/etc/rabbitmq/rabbitmq.conf` .
+
+#### plugin recipe
+
+Enable RabbitMQ plugins to be included in the RabbitMQ package.
+
+```
+# your recipe
+include_recipe 'rabbitmq::plugin'
+```
+
+#### enable recipe
+
+Enable RabbitMQ service.
+
+```
+# your recipe
+include_recipe 'rabbitmq::enable'
 ```
 
 ### Node
