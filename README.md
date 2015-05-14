@@ -51,6 +51,25 @@ Enable RabbitMQ plugins to be included in the RabbitMQ package.
 include_recipe 'rabbitmq::plugin'
 ```
 
+When include this recipe, you can use `rabbitmq_plugin` resource.
+
+```
+# your recipe
+include_recipe 'rabbitmq::plugin'
+
+# enable 'rabbitmq_management' plugin on RabbitMQ
+rabbitmq_plugin 'rabbitmq_management' do
+  action :enable
+  notifies :restart, 'service[rabbitmq-server]'
+end
+
+# disable 'amqp_client' plugin on RabbitMQ
+rabbitmq_plugin 'amqp_client' do
+  action :disable
+  notifies :restart, 'service[rabbitmq-server]'
+end
+```
+
 #### enable recipe
 
 Enable RabbitMQ service.
