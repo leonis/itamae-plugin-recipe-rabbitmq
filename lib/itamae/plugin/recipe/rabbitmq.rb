@@ -1,10 +1,10 @@
-require "itamae/plugin/recipe/rabbitmq/version"
+require 'pathname'
+require Pathname.new(__FILE__).join('../../resource/rabbitmq_plugin.rb').to_s
 
 module Itamae
   module Plugin
     module Recipe
       module Rabbitmq
-        # Your code goes here...
       end
     end
   end
