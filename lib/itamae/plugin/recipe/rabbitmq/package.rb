@@ -1,7 +1,7 @@
 # Install & Configure RabbitMQ.
 #
 # This recipe created with reference to http://sensuapp.org/docs/0.18/install-rabbitmq
-
+include_recipe 'rabbitmq::default'
 include_recipe 'erlang::package'
 
 # Install

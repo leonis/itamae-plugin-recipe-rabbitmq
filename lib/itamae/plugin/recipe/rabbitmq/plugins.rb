@@ -1,7 +1,6 @@
 # Install RabbitMQ plugins
 
-require 'pathname'
-require Pathname.new(__FILE__).join('../../rabbitmq.rb').to_s
+include_recipe 'rabbitmq::default'
 
 service 'rabbitmq-server' do
   action :nothing

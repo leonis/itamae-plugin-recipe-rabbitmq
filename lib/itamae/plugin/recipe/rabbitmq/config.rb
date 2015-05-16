@@ -1,4 +1,5 @@
 # Configure RabbitMQ
+include_recipe 'rabbitmq::default'
 
 unless node[:rabbitmq].nil?
   # create vhost
