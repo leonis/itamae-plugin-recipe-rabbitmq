@@ -61,10 +61,8 @@ module Itamae
       end
 
       def check_command!
-        exit_status = run_command("[ -x #{PLUGIN_COMMAND} ]").exit_status
-        return if exit_status == 0
-
-        fail "rabbitmq-plugins command not found at '#{PLUGIN_COMMAND}'"
+        fail "rabbitmq-plugins command not found at '#{PLUGIN_COMMAND}'" \
+          unless check_command("[ -x #{PLUGIN_COMMAND} ]")
       end
     end
   end
