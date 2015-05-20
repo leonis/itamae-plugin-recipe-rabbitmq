@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Itamae::Plugin::Recipe::Rabbitmq::VERSION
   spec.authors       = ['Daisuke Hirakiuchi']
   spec.email         = ['devops@leonisand.co']
-  spec.license       = ['MIT']
+  spec.licenses      = ['MIT']
 
   spec.summary       = 'Itamae plugin to install RabbitMQ.'
   spec.description   = 'Itamae plugin to install RabbitMQ by package.'
@@ -21,5 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.9'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_runtime_dependency 'itamae', '~> 1.2'
-  spec.add_runtime_dependency 'itamae-plugin-recipe-erlang'
+  spec.add_runtime_dependency 'itamae-plugin-recipe-erlang', '~> 0.1'
 end
